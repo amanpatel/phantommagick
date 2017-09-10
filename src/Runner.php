@@ -142,6 +142,9 @@ class Runner
                 return false;
             }
         } elseif (Str::contains($uname, 'linux')) {
+        	// Apatel: do not perform "which" because on RHEL 6
+        	// it fails to detect the binary even if its present
+        	return true;
             if (! shell_exec(escapeshellcmd("which {$binary}"))) {
                 return false;
             }
